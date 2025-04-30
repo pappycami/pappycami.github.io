@@ -1,13 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Bonjour vous</title>
-	<link rel="stylesheet" href="">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aina Pappy - Développeur Web</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --header-bg: #e45149;
+      --page-bg: #fceec7;
+      --section-bg: #b6d2dd;
+      --text-main: #259086;
+      --text-dark: #0a463c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--page-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .container {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section {
+      background-color: var(--section-bg);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    h2 i {
+      color: var(--text-dark);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li {
+      margin-bottom: 0.6rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-dark);
+    }
+
+    ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--text-main);
+      position: absolute;
+      left: 0;
+    }
+
+    a {
+      color: var(--text-main);
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--header-bg);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-	<h1>Bonjour vous</h1>
-	ceci est un test de mon site
+  <header>
+    <h1>Aina Pappy</h1>
+    <p><i class="fas fa-code"></i> Développeur Full-Stack PHP | Java | Python</p>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2><i class="fas fa-user"></i> À propos</h2>
+      <p>Développeur passionné avec plus de 13 ans d’expérience dans le développement web, notamment avec WordPress et Laravel. J’aide les entreprises à créer des solutions performantes, évolutives et sur mesure.</p>
+    </section>
+
+    <section>
+      <h2><i class="fas fa-tools"></i> Compétences</h2>
+      <ul>
+        <li>PHP (9/10) – Laravel, APIs REST, sécurité</li>
+        <li>Java (8/10) – Applications backend, APIs</li>
+        <li>Python (4/10) – Django, automatisation</li>
+        <li>WordPress – Thèmes & plugins personnalisés</li>
+        <li>React.js & Vue.js – Front-end dynamique</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><i class="fas fa-briefcase"></i> Ce que je propose</h2>
+      <ul>
+        <li>Applications web full-stack</li>
+        <li>Développement de thèmes et plugins WordPress</li>
+        <li>Création et sécurisation d’APIs Laravel</li>
+        <li>Refactorisation et optimisation de code</li>
+        <li>Intégration React/Vue avec CMS</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><i class="fas fa-envelope"></i> Contact</h2>
+      <p><i class="fas fa-paper-plane"></i> Email : <a href="mailto:ainapappy@gmail.com">ainapappy@gmail.com</a></p>
+      <p><i class="fas fa-globe"></i> Portfolio : <a href="https://pappycami.github.io">https://pappycami.github.io</a></p>
+      <p><i class="fas fa-map-marker-alt"></i> Basé à Antananarivo, Madagascar – Disponible en remote 🌍</p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 PappyCami. Tous droits réservés.
+  </footer>
 </body>
 </html>
