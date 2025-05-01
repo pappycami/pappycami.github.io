@@ -1,0 +1,98 @@
+:root {
+  --header-bg: #e45149;
+  --page-bg: #fceec7;
+  --section-bg: #b6d2dd;
+  --text-main: #259086;
+  --text-dark: #0a463c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.container {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+section {
+  background-color: var(--section-bg);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+}
+
+h2 i {
+  color: var(--text-dark);
+}
+
+ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+ul li {
+  margin-bottom: 0.6rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-dark);
+}
+
+ul li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--text-main);
+  position: absolute;
+  left: 0;
+}
+
+a {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+footer {
+  background: var(--header-bg);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: white;
+}
