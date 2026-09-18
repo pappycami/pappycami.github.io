@@ -10,8 +10,14 @@
   <meta name="keywords"
     content="Développeur web, Full-Stack, Laravel, PHP, Java, Python, Django, WordPress, React, Vue.js, API REST, Antananarivo, Madagascar, Freelance, Télétravail" />
   <meta name="author" content="Aina Papy" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0d0716" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#f9f7fc" media="(prefers-color-scheme: light)" />
+
+  <!-- SEO local : Antananarivo, Madagascar -->
+  <meta name="geo.region" content="MG" />
+  <meta name="geo.placename" content="Antananarivo" />
+  <meta name="ICBM" content="-18.8792, 47.5079" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Aina Papy — Développeur Full-Stack · Laravel, Java, Python" />
@@ -19,14 +25,20 @@
     content="Développeur full-stack à Antananarivo, Madagascar. Spécialiste Laravel, Java et Python : applications sur mesure, APIs sécurisées, WordPress et refontes performantes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pappycami.github.io" />
-  <meta property="og:image" content="https://pappycami.github.io/assets/profile-banner.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="https://pappycami.github.io/assets/aina-papy-developpeur-full-stack-antananarivo.jpg" />
+  <meta property="og:image:alt" content="Aina Papy, développeur web full-stack à Antananarivo, Madagascar" />
+  <meta property="og:image:width" content="288" />
+  <meta property="og:image:height" content="318" />
+  <meta property="og:image:type" content="image/jpeg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Aina Papy — Développeur Full-Stack à Madagascar" />
   <meta name="twitter:description"
     content="Spécialiste Laravel, Java et Python — développement de sites et applications web sur mesure, performants et sécurisés." />
-  <meta name="twitter:image" content="https://pappycami.github.io/assets/profile-banner.jpg" />
+  <meta name="twitter:image" content="https://pappycami.github.io/assets/aina-papy-developpeur-full-stack-antananarivo.jpg" />
+  <meta name="twitter:image:alt" content="Aina Papy, développeur web full-stack à Antananarivo, Madagascar" />
 
   <link rel="canonical" href="https://pappycami.github.io" />
 
@@ -73,7 +85,16 @@
     },
     "email": "mailto:ainapappy@gmail.com",
     "url": "https://pappycami.github.io",
-    "image": "https://pappycami.github.io/assets/profile-banner.jpg",
+    "description": "Développeur web full-stack freelance à Antananarivo, Madagascar : Laravel & PHP, Java, Python/Django, WordPress et APIs REST.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://pappycami.github.io/assets/aina-papy-developpeur-full-stack-antananarivo.jpg",
+      "caption": "Aina Papy, développeur web full-stack à Antananarivo, Madagascar",
+      "description": "Portrait de Aina Papy, développeur web full-stack freelance spécialisé Laravel, Java et Python, basé à Antananarivo, Madagascar.",
+      "width": 288,
+      "height": 318,
+      "encodingFormat": "image/jpeg"
+    },
     "knowsAbout": [
       "Laravel",
       "PHP",
@@ -300,11 +321,16 @@
 
         <div class="about-grid">
           <div data-reveal="left">
-            <div class="avatar" data-parallax="0.25">
+            <figure class="avatar" data-parallax="0.25">
               <div class="avatar-ring" aria-hidden="true"></div>
-              <img class="avatar-img" src="assets/profile-banner.jpg" alt="Photo de profil de Aina Papy" />
-              <span class="avatar-badge"><i class="fa-solid fa-location-dot"></i> Antananarivo, Madagascar</span>
-            </div>
+              <img class="avatar-img" src="assets/aina-papy-developpeur-full-stack-antananarivo.jpg"
+                alt="Aina Papy, développeur web full-stack freelance à Antananarivo, Madagascar — spécialiste Laravel, Java et Python"
+                title="Aina Papy — Développeur Full-Stack (Laravel · Java · Python)" width="288" height="318"
+                loading="lazy" decoding="async" />
+              <figcaption class="avatar-badge">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Antananarivo, Madagascar
+              </figcaption>
+            </figure>
           </div>
 
           <div class="about-text" data-reveal="right">

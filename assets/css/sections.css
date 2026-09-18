@@ -20,7 +20,7 @@
   position: relative;
   width: min(320px, 78vw);
   aspect-ratio: 1;
-  margin-inline: auto;
+  margin: 0 auto; /* reset des marges UA de <figure> */
   filter: drop-shadow(0 26px 44px var(--glow-card));
 }
 
