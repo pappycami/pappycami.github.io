@@ -1,55 +1,101 @@
-# pappycami.github.io
+# 🌍 pappycami.github.io
 
-# 👨‍💻 Développeur Full-Stack PHP | Java | Python
+Portfolio one-page de **Aina Papy**, développeur web full-stack freelance à **Antananarivo, Madagascar**.
 
-Salut ! Je suis un développeur passionné avec plus de 13 ans d'expérience dans la création de solutions web robustes, performantes et évolutives. Mon expertise couvre une large gamme de technologies backend et frontend, avec une spécialisation poussée en PHP et WordPress.
+🔗 **En ligne** : [https://pappycami.github.io](https://pappycami.github.io)
+
+---
+
+## 👨‍💻 À propos
+
+Plus de **13 ans d'expérience** dans la création de solutions web robustes, performantes et sur mesure — sites vitrines, e-commerce, APIs et outils métier — pour des clients locaux et internationaux. Spécialiste **Laravel & PHP**, avec Java et Python/Django comme autres expertises cœur. Disponible en télétravail, en français comme en anglais.
 
 ---
 
 ## 🚀 Compétences techniques
 
-### 🔧 Backend
-- **PHP (9/10)** – Framework Laravel (5 ans), développement d’API REST, sécurité, performances
-- **Java (8/10)** – Applications d'entreprise, architecture modulaire, intégration d’APIs
-- **Python (4/10)** – Utilisation de Django (1 an), scripts d’automatisation, projets web simples
+| Stack | Niveau | Points forts |
+|---|---|---|
+| **Laravel & PHP** | 9/10 | APIs REST, architecture MVC, Eloquent, PHPUnit, sécurité, performances |
+| **Java** | 8/10 | Backends fiables, applications distribuées, POO rigoureuse |
+| **Python & Django** | 7/10 | Prototypage rapide, backends d'APIs, automatisation & scripting |
 
-### 🖥️ CMS
-- **WordPress (13 ans)** – Création de **thèmes personnalisés** et **plugins sur-mesure**. Maîtrise avancée du cœur de WordPress.
-- Développement **full-stack** avec WordPress + React/Vue
-
-### 🌐 Frontend
-- **React.js** – Interfaces dynamiques, composants réutilisables, consommation d’API
-- **Vue.js** – Applications SPA, intégration rapide avec Laravel ou WordPress
+**Également à l'aise avec** : WordPress (thèmes & plugins sur mesure) · React.js · Vue.js · MySQL · Sécurité web · Performance · SEO technique
 
 ---
 
-## 🛠️ Ce que je peux faire pour vous
+## 🛠️ Services
 
-- 🔹 Réaliser des **applications web full-stack** robustes
-- 🔹 Créer des **thèmes WordPress sur-mesure** au pixel près
-- 🔹 Développer des **plugins WordPress avancés** avec des fonctionnalités spécifiques
-- 🔹 Mettre en place des **APIs sécurisées** avec Laravel
-- 🔹 Concevoir des back-offices puissants pour vos projets
-- 🔹 Améliorer ou refactorer vos projets existants
+- 🔹 **Applications sur mesure** — full-stack, du cahier des charges à la mise en production
+- 🔹 **Sites WordPress pro** — performants et pensés pour votre audience et votre SEO
+- 🔹 **Plugins & extensions** — fonctionnalités avancées au-delà de l'existant
+- 🔹 **Refonte, SEO & performance** — modernisation complète de sites existants
+- 🔹 **APIs & intégrations** — déploiement sécurisé et connexion de vos systèmes
+- 🔹 **Suivi & évolutions** — maintenance, montées de version, nouvelles fonctionnalités
 
 ---
 
-## 💡 Pourquoi travailler avec moi ?
+## ✨ Fonctionnalités du site
 
-- ✅ Plus d'une décennie d'expertise WordPress
-- ✅ Solide expérience en Laravel pour des projets modernes
-- ✅ Approche orientée performance, sécurité et évolutivité
-- ✅ Capacité à prendre en charge des projets **de A à Z**
-- ✅ Code clair, maintenable et documenté
+- 🌗 **Thème sombre / clair** — préférence persistée en `localStorage`, détecte `prefers-color-scheme`
+- 🖱️ **Hero en parallaxe multi-couches** — orbes réactifs à la souris et au scroll
+- ⌨️ **Effet typewriter** sur les rôles + **compteurs animés** (IntersectionObserver)
+- 📊 **Barre de progression de lecture** et navigation active selon la section
+- 📱 **Menu mobile**, bouton retour en haut, animations de révélation au scroll
+- 🔍 **SEO complet** : Open Graph, Twitter Cards, JSON-LD Schema.org, meta géo (Antananarivo)
+- ♿ **Accessibilité** : attributs ARIA, fallback `<noscript>`, respect de `prefers-reduced-motion`
+
+---
+
+## 🧱 Stack technique
+
+- **HTML5 sémantique** — page unique, aucun générateur ni étape de build
+- **[Alpine.js 3](https://alpinejs.dev)** (CDN) pour l'interactivité — composants (`portfolio`, `typewriter`, `counter`) enregistrés via `alpine:init`
+- **CSS modulaire** — `theme` · `animations` · `layout` · `sections`
+- **JavaScript vanilla** ([assets/js/app.js](assets/js/app.js)) — parallaxe, thème, reveals
+- **Font Awesome 6** + Google Fonts (Inter, Orbitron, Sansation…)
+
+100 % statique, hébergé sur **GitHub Pages**.
+
+---
+
+## 📁 Structure du projet
+
+```
+gitio/
+├── index.html              # Page unique (sections : accueil, à propos, compétences, services, contact)
+├── assets/
+│   ├── aina-papy-developpeur-full-stack-antananarivo.jpg
+│   ├── css/
+│   │   ├── theme.css       # Variables, thèmes sombre/clair
+│   │   ├── animations.css  # Keyframes, transitions
+│   │   ├── layout.css      # Grille, navbar, footer
+│   │   └── sections.css    # Hero, cards, contact…
+│   └── js/
+│       └── app.js          # Composants Alpine + parallaxe + thème
+└── README.md
+```
+
+---
+
+## 💻 Lancer localement
+
+Aucune dépendance à installer — ouvrez simplement `index.html` dans un navigateur, ou servez le dossier :
+
+```bash
+python -m http.server 8000
+# puis http://localhost:8000
+```
 
 ---
 
 ## 📫 Me contacter
 
-📧 Email : [ainapappy@gmail.com]  
-🌐 Portfolio / Site : [https://pappycami.github.io]  
-📍 Basé à [Antananarivo Madagascar] – disponible à distance 🌍
+- 📧 Email : [ainapappy@gmail.com](mailto:ainapappy@gmail.com)
+- 🐙 GitHub : [github.com/pappycami](https://github.com/pappycami)
+- 🌐 Blog & portfolio : [www.ainatrix.com](https://www.ainatrix.com)
+- 📍 Antananarivo, Madagascar — disponible à distance 🌍
 
 ---
 
-Merci de votre visite, et au plaisir de collaborer sur votre prochain projet ambitieux !
+Merci de votre visite, et au plaisir de collaborer sur votre prochain projet ambitieux ! 🚀
