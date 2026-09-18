@@ -374,6 +374,19 @@
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.scroll-hint:hover {
+  color: var(--c-primary-strong);
+  transform: translateX(-50%) translateY(3px);
+}
+
+.scroll-hint:focus-visible {
+  outline: 2px solid var(--c-primary-strong);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .scroll-hint i { animation: bounce-down 1.8s ease-in-out infinite; }
