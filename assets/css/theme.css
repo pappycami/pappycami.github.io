@@ -127,6 +127,13 @@ img, svg {
 .section {
   position: relative;
   padding: 6.5rem 0;
+  overflow: hidden; /* coupe les couches décoratives parallaxe */
+}
+
+/* Le contenu reste au-dessus des couches décoratives */
+.section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-alt {

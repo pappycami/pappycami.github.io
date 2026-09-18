@@ -465,6 +465,12 @@
   mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 20%, transparent 75%);
 }
 
+.pband-inner {
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+}
+
 .pband-quote {
   position: relative;
   font-family: var(--font-script);

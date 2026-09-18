@@ -95,11 +95,19 @@
       heroY: 0,       /* scroll tant que le hero est visible */
       vh: window.innerHeight,
       ticking: false,
+      parallaxEls: [], /* couches [data-parallax] des sections */
 
       init() {
         this.syncTheme();
+        this.initParallax();
         window.addEventListener('scroll', this.onScroll.bind(this), { passive: true });
-        window.addEventListener('resize', () => { this.vh = window.innerHeight; });
+        window.addEventListener('resize', () => {
+          this.vh = window.innerHeight;
+          this.measureParallax();
+        });
+        /* Re-mesure après le chargement complet (polices, images) */
+        window.addEventListener('load', () => this.measureParallax());
+        setTimeout(() => this.measureParallax(), 1200);
         this.onScroll();
         this.initReveal();
         this.initSpy();
@@ -135,6 +143,7 @@
           this.progress = max > 0 ? (y / max) * 100 : 0;
 
           this.heroY = Math.min(y, this.vh * 1.2);
+          this.updateParallax();
           this.ticking = false;
         });
       },
@@ -157,6 +166,47 @@
         const shift = this.heroY * 0.28;
         const opacity = Math.max(0, 1 - this.heroY / (this.vh * 0.85));
         return `transform: translate3d(0, ${shift.toFixed(1)}px, 0); opacity: ${opacity.toFixed(3)}`;
+      },
+
+      /* ----- Parallaxe des sections : couches [data-parallax] -----
+         Chaque couche reçoit un facteur de vitesse ; plus il est élevé,
+         plus la couche se déplace (en sens inverse du scroll) par rapport
+         au reste de la section. Vitesse négative = même sens. */
+      initParallax() {
+        if (REDUCED) return;
+        this.parallaxEls = Array.from(document.querySelectorAll('[data-parallax]')).map((el) => ({
+          el,
+          speed: parseFloat(el.dataset.parallax) || 0.2,
+          offset: null, /* écart initial au centre de l'ancêtre positionné */
+          center: 0,    /* position verticale absolue du centre de la couche */
+        }));
+        this.measureParallax();
+      },
+
+      /* Mesure sans boucle de rétroaction : chaque couche est ancrée à son
+         ancêtre positionné (la section, jamais transformée) et non à
+         elle-même — sinon son propre transform fausserait la mesure. */
+      measureParallax() {
+        for (const p of this.parallaxEls) {
+          const anchor = p.el.offsetParent || p.el.parentElement;
+          if (!anchor) continue;
+          const ar = anchor.getBoundingClientRect();
+          const er = p.el.getBoundingClientRect();
+          if (p.offset === null) {
+            p.offset = (er.top + er.height / 2) - (ar.top + ar.height / 2);
+          }
+          p.center = ar.top + window.scrollY + ar.height / 2 + p.offset;
+        }
+      },
+
+      updateParallax() {
+        if (REDUCED || !this.parallaxEls.length) return;
+        const mid = window.scrollY + this.vh / 2;
+        for (const p of this.parallaxEls) {
+          const progress = (p.center - mid) / this.vh; /* -1 (passé) → 1 (à venir) */
+          const shift = -progress * p.speed * 120;     /* décalage en px */
+          p.el.style.transform = 'translate3d(0, ' + shift.toFixed(1) + 'px, 0)';
+        }
       },
 
       scrollTop() {
