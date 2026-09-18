@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aina Pappy — Développeur Full-Stack · Laravel, Java, Python</title>
+  <title>Aina Papy — Développeur Full-Stack · Laravel, Java, Python</title>
   <meta name="description"
     content="Développeur web full-stack à Antananarivo, Madagascar : spécialiste Laravel & PHP, Java et Python. Depuis 13 ans, des applications sur mesure, APIs sécurisées, sites WordPress et refontes performantes." />
   <meta name="keywords"
     content="Développeur web, Full-Stack, Laravel, PHP, Java, Python, Django, WordPress, React, Vue.js, API REST, Antananarivo, Madagascar, Freelance, Télétravail" />
-  <meta name="author" content="Aina Pappy" />
+  <meta name="author" content="Aina Papy" />
   <meta name="theme-color" content="#0d0716" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#f9f7fc" media="(prefers-color-scheme: light)" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Aina Pappy — Développeur Full-Stack · Laravel, Java, Python" />
+  <meta property="og:title" content="Aina Papy — Développeur Full-Stack · Laravel, Java, Python" />
   <meta property="og:description"
     content="Développeur full-stack à Antananarivo, Madagascar. Spécialiste Laravel, Java et Python : applications sur mesure, APIs sécurisées, WordPress et refontes performantes." />
   <meta property="og:type" content="website" />
@@ -23,7 +23,7 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Aina Pappy — Développeur Full-Stack à Madagascar" />
+  <meta name="twitter:title" content="Aina Papy — Développeur Full-Stack à Madagascar" />
   <meta name="twitter:description"
     content="Spécialiste Laravel, Java et Python — développement de sites et applications web sur mesure, performants et sécurisés." />
   <meta name="twitter:image" content="https://pappycami.github.io/assets/profile-banner.jpg" />
@@ -64,7 +64,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Aina Pappy",
+    "name": "Aina Papy",
     "jobTitle": "Développeur Web Full-Stack",
     "address": {
       "@type": "PostalAddress",
@@ -94,9 +94,20 @@
 
   <noscript>
     <style>
-      [data-reveal] { opacity: 1; transform: none; }
-      .navbar { position: static; }
-      .scroll-hint, .back-top, .progress { display: none; }
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+
+      .navbar {
+        position: static;
+      }
+
+      .scroll-hint,
+      .back-top,
+      .progress {
+        display: none;
+      }
     </style>
   </noscript>
 </head>
@@ -109,7 +120,7 @@
   <!-- ==================== NAVIGATION ==================== -->
   <header class="navbar" :class="{ scrolled: scrolled }">
     <div class="container nav-inner">
-      <a href="#accueil" class="logo" aria-label="Aina Pappy — retour en haut">
+      <a href="#accueil" class="logo" aria-label="Aina Papy — retour en haut">
         <span class="logo-mark">AP</span>
         <span>Aina<span class="grad-text">Pappy</span></span>
       </a>
@@ -217,14 +228,20 @@
           <div class="cw-body">
             <div class="ln"><span class="kw">&lt;?php</span></div>
             <div class="ln"><span class="cm">// Développeur Full-Stack — Madagascar 🇲🇬</span></div>
-            <div class="ln"><span class="var">$dev</span> = <span class="kw">new</span> <span class="fn">Developer</span>(<span class="str">'Aina Pappy'</span>);</div>
+            <div class="ln"><span class="var">$dev</span> = <span class="kw">new</span> <span
+                class="fn">Developer</span>(<span class="str">'Aina Papy'</span>);</div>
             <div class="ln">&nbsp;</div>
-            <div class="ln"><span class="var">$dev</span>-&gt;<span class="fn">stack</span>([<span class="str">'Laravel'</span>, <span class="str">'Java'</span>, <span class="str">'Python'</span>])</div>
-            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">base</span>(<span class="str">'Antananarivo'</span>)</div>
-            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">remote</span>(<span class="kw">true</span>)</div>
-            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">experience</span>(<span class="tag2">13</span>);</div>
+            <div class="ln"><span class="var">$dev</span>-&gt;<span class="fn">stack</span>([<span
+                class="str">'Laravel'</span>, <span class="str">'Java'</span>, <span class="str">'Python'</span>])</div>
+            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">base</span>(<span
+                class="str">'Antananarivo'</span>)</div>
+            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">remote</span>(<span class="kw">true</span>)
+            </div>
+            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">experience</span>(<span
+                class="tag2">13</span>);</div>
             <div class="ln">&nbsp;</div>
-            <div class="ln"><span class="var">$dev</span>-&gt;<span class="fn">ship</span>(); <span class="cm">// 🚀</span></div>
+            <div class="ln"><span class="var">$dev</span>-&gt;<span class="fn">ship</span>(); <span class="cm">//
+                🚀</span></div>
           </div>
         </div>
       </div>
@@ -353,8 +370,7 @@
           </div>
 
           <!-- Laravel & PHP -->
-          <div class="skill-panel" x-show="tab === 'laravel'" x-transition:enter.opacity.duration.400ms
-            role="tabpanel">
+          <div class="skill-panel" x-show="tab === 'laravel'" x-transition:enter.opacity.duration.400ms role="tabpanel">
             <div class="skill-head">
               <span class="skill-name">Laravel &amp; PHP</span>
               <span class="skill-pct">9/10</span>
@@ -582,7 +598,7 @@
       </div>
 
       <p class="copyright">
-        &copy; 2026 Aina Pappy — Antananarivo, Madagascar. Conçu avec <span class="heart">&hearts;</span> et
+        &copy; 2026 Aina Papy — Antananarivo, Madagascar. Conçu avec <span class="heart">&hearts;</span> et
         Alpine.js.
       </p>
     </div>
