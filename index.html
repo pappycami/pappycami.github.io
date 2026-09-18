@@ -4,31 +4,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aina Pappy - Développeur Full-Stack à Antananarivo</title>
+  <title>Aina Pappy — Développeur Full-Stack · Laravel, Java, Python</title>
   <meta name="description"
-    content="Développeur web full-stack à Madagascar : expert PHP, Java, WordPress, Laravel, React, Vue. Création de sites sur mesure, APIs, thèmes & plugins WordPress." />
+    content="Développeur web full-stack à Antananarivo, Madagascar : spécialiste Laravel & PHP, Java et Python. Depuis 13 ans, des applications sur mesure, APIs sécurisées, sites WordPress et refontes performantes." />
   <meta name="keywords"
-    content="Développeur web, PHP, Laravel, WordPress, Java, Python, React, Vue.js, Antananarivo, Madagascar, Freelance, Développement Full-Stack" />
+    content="Développeur web, Full-Stack, Laravel, PHP, Java, Python, Django, WordPress, React, Vue.js, API REST, Antananarivo, Madagascar, Freelance, Télétravail" />
   <meta name="author" content="Aina Pappy" />
+  <meta name="theme-color" content="#0d0716" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f9f7fc" media="(prefers-color-scheme: light)" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Aina Pappy - Développeur Full-Stack à Antananarivo" />
+  <meta property="og:title" content="Aina Pappy — Développeur Full-Stack · Laravel, Java, Python" />
   <meta property="og:description"
-    content="Développeur full-stack PHP, Java, WordPress, Laravel, React basé à Antananarivo, Madagascar. Création de sites et applications web sur mesure." />
+    content="Développeur full-stack à Antananarivo, Madagascar. Spécialiste Laravel, Java et Python : applications sur mesure, APIs sécurisées, WordPress et refontes performantes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pappycami.github.io" />
   <meta property="og:image" content="https://pappycami.github.io/assets/profile-banner.jpg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Aina Pappy - Développeur Full-Stack à Madagascar" />
+  <meta name="twitter:title" content="Aina Pappy — Développeur Full-Stack à Madagascar" />
   <meta name="twitter:description"
-    content="Expert PHP, Java, WordPress, Laravel, React, Vue.js - développement de sites web sur mesure et performants." />
+    content="Spécialiste Laravel, Java et Python — développement de sites et applications web sur mesure, performants et sécurisés." />
   <meta name="twitter:image" content="https://pappycami.github.io/assets/profile-banner.jpg" />
 
   <link rel="canonical" href="https://pappycami.github.io" />
+
+  <!-- Thème appliqué avant le premier rendu (évite le flash) -->
+  <script>
+    (function () {
+      var theme = 'dark';
+      try {
+        var saved = localStorage.getItem('ap-theme');
+        if (saved) theme = saved;
+        else if (window.matchMedia('(prefers-color-scheme: light)').matches) theme = 'light';
+      } catch (e) { /* stockage indisponible */ }
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    })();
+  </script>
+
+  <!-- Polices ainatrix.com -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@400;600;700&family=Orbitron:wght@500;600;700;800;900&family=Sansation:wght@300;400;600;700&family=Sansita+Swashed:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/style.css">
+
+  <!-- Styles du portfolio (modulaires) -->
+  <link rel="stylesheet" href="assets/css/theme.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
 
   <!-- Données structurées Schema.org -->
   <script type="application/ld+json">
@@ -46,70 +75,528 @@
     "url": "https://pappycami.github.io",
     "image": "https://pappycami.github.io/assets/profile-banner.jpg",
     "knowsAbout": [
-      "PHP",
       "Laravel",
+      "PHP",
       "Java",
-      "WordPress",
+      "Python",
       "Django",
+      "WordPress",
       "React",
-      "Vue.js"
+      "Vue.js",
+      "API REST"
     ],
     "sameAs": [
-      "https://github.com/pappycami"
+      "https://github.com/pappycami",
+      "https://www.ainatrix.com"
     ]
   }
   </script>
 
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1; transform: none; }
+      .navbar { position: static; }
+      .scroll-hint, .back-top, .progress { display: none; }
+    </style>
+  </noscript>
 </head>
 
-<body>
-  <header>
-    <h1>Aina Pappy</h1>
-    <p><i class="fas fa-code"></i> Développeur Full-Stack PHP | Java | Python à Antananarivo</p>
+<body x-data="portfolio">
+
+  <!-- Barre de progression de lecture -->
+  <div class="progress" :style="`width:${progress}%`" aria-hidden="true"></div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <header class="navbar" :class="{ scrolled: scrolled }">
+    <div class="container nav-inner">
+      <a href="#accueil" class="logo" aria-label="Aina Pappy — retour en haut">
+        <span class="logo-mark">AP</span>
+        <span>Aina<span class="grad-text">Pappy</span></span>
+      </a>
+
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="#accueil" :class="{ active: active === 'accueil' }">Accueil</a></li>
+          <li><a href="#apropos" :class="{ active: active === 'apropos' }">À propos</a></li>
+          <li><a href="#competences" :class="{ active: active === 'competences' }">Compétences</a></li>
+          <li><a href="#services" :class="{ active: active === 'services' }">Services</a></li>
+          <li><a href="#contact" :class="{ active: active === 'contact' }">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" @click="toggleTheme()"
+          :aria-label="theme === 'dark' ? 'Passer en thème clair' : 'Passer en thème sombre'">
+          <i class="fa-solid" :class="theme === 'dark' ? 'fa-sun' : 'fa-moon'"></i>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" @click="mobileOpen = true" aria-label="Ouvrir le menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <div class="container">
-    <section>
-      <h2><i class="fas fa-user"></i> À propos</h2>
-      <p>Développeur web expérimenté basé à Antananarivo, Madagascar. Avec plus de 13 ans d’expertise, je conçois des
-        solutions robustes et personnalisées, en particulier avec WordPress et Laravel. J’interviens sur tous types de
-        projets web : site vitrine, e-commerce, API, outils métier…</p>
-    </section>
-
-    <section>
-      <h2><i class="fas fa-tools"></i> Compétences</h2>
-      <ul>
-        <li>PHP (9/10) – Laravel, sécurité, développement d’APIs REST</li>
-        <li>Java (8/10) – Backend, services métier, applications distribuées</li>
-        <li>Python (4/10) – Développement web avec Django</li>
-        <li>WordPress – Création de thèmes & plugins personnalisés</li>
-        <li>React.js & Vue.js – Interfaces dynamiques modernes</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2><i class="fas fa-briefcase"></i> Services proposés</h2>
-      <ul>
-        <li>Applications web full-stack et sur mesure</li>
-        <li>Création de sites WordPress professionnels</li>
-        <li>Développement de plugins et fonctionnalités avancées</li>
-        <li>Refonte de sites existants, optimisation SEO et performance</li>
-        <li>Déploiement sécurisé d’APIs et intégration de systèmes</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2><i class="fas fa-envelope"></i> Contact</h2>
-      <p><i class="fas fa-paper-plane"></i> Email : <a href="mailto:ainapappy@gmail.com">ainapappy@gmail.com</a></p>
-      <p><i class="fas fa-globe"></i> Portfolio : <a href="https://pappycami.github.io">https://pappycami.github.io</a>
-      </p>
-      <p><i class="fas fa-map-marker-alt"></i> Basé à Antananarivo, Madagascar – Disponible en télétravail 🌍</p>
-    </section>
+  <!-- Menu mobile -->
+  <div class="mobile-menu" x-show="mobileOpen" x-cloak x-transition.opacity.duration.300ms
+    @keydown.escape.window="mobileOpen = false">
+    <button class="icon-btn mobile-close" type="button" @click="mobileOpen = false" aria-label="Fermer le menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <a href="#accueil" @click="mobileOpen = false">Accueil</a>
+    <a href="#apropos" @click="mobileOpen = false">À propos</a>
+    <a href="#competences" @click="mobileOpen = false">Compétences</a>
+    <a href="#services" @click="mobileOpen = false">Services</a>
+    <a href="#contact" @click="mobileOpen = false">Contact</a>
   </div>
 
-  <footer>
-    &copy; 2025 Aina Pappy. Tous droits réservés. Développement web professionnel à Madagascar.
+  <main>
+    <!-- ==================== HERO (parallaxe multi-couches) ==================== -->
+    <section id="accueil" class="hero" @mousemove="onHeroMouse($event)">
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <!-- Orbes en parallaxe (souris + scroll, profondeurs différentes) -->
+      <div class="orb-wrap p1" :style="orbStyle(70, 0.12)" aria-hidden="true">
+        <div class="orb orb-1 animate-float-slow"></div>
+      </div>
+      <div class="orb-wrap p2" :style="orbStyle(110, 0.2)" aria-hidden="true">
+        <div class="orb orb-2 animate-float"></div>
+      </div>
+      <div class="orb-wrap p3" :style="orbStyle(55, 0.3)" aria-hidden="true">
+        <div class="orb orb-3 animate-float-slow"></div>
+      </div>
+
+      <div class="container hero-inner" :style="heroStyle()">
+        <div>
+          <p class="hero-badge">
+            <span class="dot" aria-hidden="true"></span>
+            Disponible pour vos projets · Télétravail 🌍
+          </p>
+
+          <h1 class="hero-title">
+            Aina <span class="grad-text">Pappy</span>
+          </h1>
+
+          <p class="hero-role" x-data="typewriter([
+                'Développeur Full-Stack',
+                'Spécialiste Laravel & PHP',
+                'Architecte Java',
+                'Développeur Python · Django',
+                'Intégrateur WordPress'
+              ])">
+            <span x-text="display">Développeur Full-Stack</span><span class="cursor" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero-desc">
+            Basé à <strong>Antananarivo, Madagascar</strong>. Depuis plus de 13 ans, je conçois des
+            solutions web robustes et sur mesure — sites vitrines, e-commerce, APIs et outils
+            métier — pour des clients locaux et internationaux.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Me contacter</a>
+            <a href="#competences" class="btn btn-ghost"><i class="fa-solid fa-code"></i> Mes compétences</a>
+          </div>
+
+          <div class="hero-tags">
+            <span class="tag-pill">Laravel</span>
+            <span class="tag-pill">Java</span>
+            <span class="tag-pill">Python</span>
+            <span class="tag-pill">WordPress</span>
+            <span class="tag-pill">React / Vue.js</span>
+          </div>
+        </div>
+
+        <!-- Fenêtre de code décorative -->
+        <div class="code-window animate-float" aria-hidden="true">
+          <div class="cw-head">
+            <span class="cw-dot r"></span>
+            <span class="cw-dot y"></span>
+            <span class="cw-dot g"></span>
+            <span class="cw-title">~/aina-pappy/developer.php</span>
+          </div>
+          <div class="cw-body">
+            <div class="ln"><span class="kw">&lt;?php</span></div>
+            <div class="ln"><span class="cm">// Développeur Full-Stack — Madagascar 🇲🇬</span></div>
+            <div class="ln"><span class="var">$dev</span> = <span class="kw">new</span> <span class="fn">Developer</span>(<span class="str">'Aina Pappy'</span>);</div>
+            <div class="ln">&nbsp;</div>
+            <div class="ln"><span class="var">$dev</span>-&gt;<span class="fn">stack</span>([<span class="str">'Laravel'</span>, <span class="str">'Java'</span>, <span class="str">'Python'</span>])</div>
+            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">base</span>(<span class="str">'Antananarivo'</span>)</div>
+            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">remote</span>(<span class="kw">true</span>)</div>
+            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<span class="fn">experience</span>(<span class="tag2">13</span>);</div>
+            <div class="ln">&nbsp;</div>
+            <div class="ln"><span class="var">$dev</span>-&gt;<span class="fn">ship</span>(); <span class="cm">// 🚀</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- ==================== MARQUEE TECHNOLOGIES ==================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item"><i class="fa-solid fa-diamond"></i> Laravel</span>
+        <span class="marquee-item"><i class="fa-brands fa-php"></i> PHP</span>
+        <span class="marquee-item"><i class="fa-brands fa-java"></i> Java</span>
+        <span class="marquee-item"><i class="fa-brands fa-python"></i> Python</span>
+        <span class="marquee-item"><i class="fa-solid fa-diamond"></i> Django</span>
+        <span class="marquee-item"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+        <span class="marquee-item"><i class="fa-brands fa-react"></i> React</span>
+        <span class="marquee-item"><i class="fa-brands fa-vuejs"></i> Vue.js</span>
+        <span class="marquee-item"><i class="fa-solid fa-database"></i> MySQL</span>
+        <span class="marquee-item"><i class="fa-solid fa-plug"></i> API REST</span>
+        <span class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</span>
+        <span class="marquee-item"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO</span>
+        <!-- Doublon pour la boucle infinie -->
+        <span class="marquee-item"><i class="fa-solid fa-diamond"></i> Laravel</span>
+        <span class="marquee-item"><i class="fa-brands fa-php"></i> PHP</span>
+        <span class="marquee-item"><i class="fa-brands fa-java"></i> Java</span>
+        <span class="marquee-item"><i class="fa-brands fa-python"></i> Python</span>
+        <span class="marquee-item"><i class="fa-solid fa-diamond"></i> Django</span>
+        <span class="marquee-item"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+        <span class="marquee-item"><i class="fa-brands fa-react"></i> React</span>
+        <span class="marquee-item"><i class="fa-brands fa-vuejs"></i> Vue.js</span>
+        <span class="marquee-item"><i class="fa-solid fa-database"></i> MySQL</span>
+        <span class="marquee-item"><i class="fa-solid fa-plug"></i> API REST</span>
+        <span class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</span>
+        <span class="marquee-item"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO</span>
+      </div>
+    </div>
+
+    <!-- ==================== À PROPOS ==================== -->
+    <section id="apropos" class="section">
+      <div class="container">
+        <div class="sec-head" data-reveal>
+          <span class="sec-kicker"><i class="fa-solid fa-user"></i> À propos</span>
+          <h2 class="sec-title">13 ans de <span class="grad-text">passion du code</span></h2>
+          <p class="sec-sub">Un profil full-stack polyvalent, spécialisé Laravel, Java et Python.</p>
+        </div>
+
+        <div class="about-grid">
+          <div data-reveal="left">
+            <div class="avatar">
+              <div class="avatar-ring" aria-hidden="true"></div>
+              <span class="avatar-core" aria-hidden="true">AP</span>
+              <span class="avatar-badge"><i class="fa-solid fa-location-dot"></i> Antananarivo, Madagascar</span>
+            </div>
+          </div>
+
+          <div class="about-text" data-reveal="right">
+            <p class="lead">
+              Développeur web expérimenté, j'interviens sur <strong>tous types de projets web</strong> :
+              site vitrine, e-commerce, API, outil métier…
+            </p>
+            <p>
+              Mon terrain de jeu : <strong>Laravel</strong> pour des applications PHP modernes et
+              sécurisées, <strong>Java</strong> pour des backends et services métier robustes,
+              <strong>Python</strong> avec Django pour aller vite sans sacrifier la qualité. Je suis
+              aussi à l'aise dans l'écosystème WordPress (thèmes &amp; plugins sur mesure) et les
+              interfaces dynamiques avec React et Vue.js.
+            </p>
+            <ul class="about-list">
+              <li><i class="fa-solid fa-check"></i> Solutions robustes, personnalisées et maintenables</li>
+              <li><i class="fa-solid fa-check"></i> APIs REST sécurisées &amp; intégration de systèmes</li>
+              <li><i class="fa-solid fa-check"></i> SEO technique, performance et bonnes pratiques</li>
+              <li><i class="fa-solid fa-check"></i> Collaboration à distance fluide, en français ou en anglais</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Statistiques animées -->
+        <div class="stats-grid">
+          <div class="stat-card" data-reveal>
+            <div class="stat-num"><span x-data="counter(13, '+')" x-text="value">13+</span></div>
+            <div class="stat-label">Années d'expérience</div>
+          </div>
+          <div class="stat-card rd-1" data-reveal>
+            <div class="stat-num"><span x-data="counter(3)" x-text="value">3</span></div>
+            <div class="stat-label">Expertises cœur</div>
+          </div>
+          <div class="stat-card rd-2" data-reveal>
+            <div class="stat-num"><span x-data="counter(10, '+')" x-text="value">10+</span></div>
+            <div class="stat-label">Technologies maîtrisées</div>
+          </div>
+          <div class="stat-card rd-3" data-reveal>
+            <div class="stat-num"><span x-data="counter(100, '%')" x-text="value">100%</span></div>
+            <div class="stat-label">Télétravail ready</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COMPÉTENCES ==================== -->
+    <section id="competences" class="section section-alt">
+      <div class="container">
+        <div class="sec-head" data-reveal>
+          <span class="sec-kicker"><i class="fa-solid fa-layer-group"></i> Compétences</span>
+          <h2 class="sec-title">Trois écosystèmes, <span class="grad-text">une exigence</span></h2>
+          <p class="sec-sub">Chaque stack a ses forces — je choisis la bonne pour le bon projet.</p>
+        </div>
+
+        <div x-data="{ tab: 'laravel' }" data-reveal>
+          <div class="tabs" role="tablist" aria-label="Écosystèmes techniques">
+            <button class="tab" :class="{ 'tab-active': tab === 'laravel' }" type="button" role="tab"
+              :aria-selected="String(tab === 'laravel')" @click="tab = 'laravel'">
+              <i class="fa-brands fa-laravel"></i> Laravel &amp; PHP
+            </button>
+            <button class="tab" :class="{ 'tab-active': tab === 'java' }" type="button" role="tab"
+              :aria-selected="String(tab === 'java')" @click="tab = 'java'">
+              <i class="fa-brands fa-java"></i> Java
+            </button>
+            <button class="tab" :class="{ 'tab-active': tab === 'python' }" type="button" role="tab"
+              :aria-selected="String(tab === 'python')" @click="tab = 'python'">
+              <i class="fa-brands fa-python"></i> Python &amp; Django
+            </button>
+          </div>
+
+          <!-- Laravel & PHP -->
+          <div class="skill-panel" x-show="tab === 'laravel'" x-transition:enter.opacity.duration.400ms
+            role="tabpanel">
+            <div class="skill-head">
+              <span class="skill-name">Laravel &amp; PHP</span>
+              <span class="skill-pct">9/10</span>
+            </div>
+            <div class="bar">
+              <div class="bar-fill" style="--level: 90%"></div>
+            </div>
+            <p class="skill-desc">
+              Ma spécialité. Concevoir des applications web robustes et sécurisées : APIs REST,
+              architecture MVC, Eloquent, queues, tests automatisés et déploiements maîtrisés.
+            </p>
+            <div class="tags">
+              <span class="tag">Laravel</span>
+              <span class="tag">PHP 8</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">API REST</span>
+              <span class="tag">Eloquent</span>
+              <span class="tag">PHPUnit</span>
+              <span class="tag">Composer</span>
+            </div>
+          </div>
+
+          <!-- Java -->
+          <div class="skill-panel" x-show="tab === 'java'" x-cloak x-transition:enter.opacity.duration.400ms
+            role="tabpanel">
+            <div class="skill-head">
+              <span class="skill-name">Java</span>
+              <span class="skill-pct">8/10</span>
+            </div>
+            <div class="bar">
+              <div class="bar-fill" style="--level: 80%"></div>
+            </div>
+            <p class="skill-desc">
+              Des backends fiables et des services métier solides : applications distribuées, POO
+              rigoureuse et architectures pensées pour durer.
+            </p>
+            <div class="tags">
+              <span class="tag">Java SE</span>
+              <span class="tag">POO</span>
+              <span class="tag">Services métier</span>
+              <span class="tag">Applications distribuées</span>
+              <span class="tag">API</span>
+            </div>
+          </div>
+
+          <!-- Python & Django -->
+          <div class="skill-panel" x-show="tab === 'python'" x-cloak x-transition:enter.opacity.duration.400ms
+            role="tabpanel">
+            <div class="skill-head">
+              <span class="skill-name">Python &amp; Django</span>
+              <span class="skill-pct">7/10</span>
+            </div>
+            <div class="bar">
+              <div class="bar-fill" style="--level: 70%"></div>
+            </div>
+            <p class="skill-desc">
+              Développement web avec Django : prototypage rapide, backends d'APIs, automatisation
+              et scripts qui font gagner des heures.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Django</span>
+              <span class="tag">API REST</span>
+              <span class="tag">Automatisation</span>
+              <span class="tag">Scripting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Également à l'aise -->
+        <div class="skills-extra" data-reveal>
+          <h3>Également à l'aise avec</h3>
+          <div class="tags" style="justify-content: center">
+            <span class="tag"><i class="fa-brands fa-wordpress"></i> WordPress — thèmes &amp; plugins</span>
+            <span class="tag"><i class="fa-brands fa-react"></i> React.js</span>
+            <span class="tag"><i class="fa-brands fa-vuejs"></i> Vue.js</span>
+            <span class="tag"><i class="fa-solid fa-shield-halved"></i> Sécurité web</span>
+            <span class="tag"><i class="fa-solid fa-gauge-high"></i> Performance</span>
+            <span class="tag"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="sec-head" data-reveal>
+          <span class="sec-kicker"><i class="fa-solid fa-briefcase"></i> Services</span>
+          <h2 class="sec-title">Ce que je peux faire <span class="grad-text">pour vous</span></h2>
+          <p class="sec-sub">De l'idée au déploiement, un interlocuteur unique pour tout le cycle.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card" data-reveal>
+            <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3 class="card-title">Applications sur mesure</h3>
+            <p class="card-text">
+              Conception et développement d'applications web full-stack complètes, du cahier des
+              charges à la mise en production.
+            </p>
+          </article>
+
+          <article class="card rd-1" data-reveal>
+            <div class="card-icon"><i class="fa-brands fa-wordpress"></i></div>
+            <h3 class="card-title">Sites WordPress pro</h3>
+            <p class="card-text">
+              Création de sites WordPress professionnels, performants et pensés pour votre
+              audience comme pour votre référencement.
+            </p>
+          </article>
+
+          <article class="card rd-2" data-reveal>
+            <div class="card-icon"><i class="fa-solid fa-plug"></i></div>
+            <h3 class="card-title">Plugins &amp; extensions</h3>
+            <p class="card-text">
+              Développement de plugins et de fonctionnalités avancées qui vont au-delà des
+              possibilités de l'existant.
+            </p>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+            <h3 class="card-title">Refonte, SEO &amp; performance</h3>
+            <p class="card-text">
+              Modernisation de sites existants : vitesse, structure, SEO technique et expérience
+              utilisateur repensées en profondeur.
+            </p>
+          </article>
+
+          <article class="card rd-1" data-reveal>
+            <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="card-title">APIs &amp; intégrations</h3>
+            <p class="card-text">
+              Déploiement sécurisé d'APIs et intégration fluide entre vos systèmes, vos outils et
+              vos services tiers.
+            </p>
+          </article>
+
+          <article class="card rd-2" data-reveal>
+            <div class="card-icon"><i class="fa-solid fa-code-branch"></i></div>
+            <h3 class="card-title">Suivi &amp; évolutions</h3>
+            <p class="card-text">
+              Maintenance, montées de version et nouvelles fonctionnalités pour faire grandir
+              votre application dans le temps.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BANDE PARALLAXE ==================== -->
+    <aside class="pband" aria-label="Citation">
+      <p class="pband-quote">« Du premier ticket à la mise en production »</p>
+      <p class="pband-sub">Laravel · Java · Python — Full-Stack</p>
+    </aside>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="sec-head" data-reveal>
+          <span class="sec-kicker"><i class="fa-solid fa-envelope"></i> Contact</span>
+          <h2 class="sec-title">Un projet en tête&nbsp;?</h2>
+          <p class="sec-sub">Parlons-en — je réponds vite, même depuis l'autre bout du monde.</p>
+        </div>
+
+        <div class="contact-grid">
+          <a href="mailto:ainapappy@gmail.com" class="contact-card" data-reveal>
+            <i class="fa-solid fa-envelope main"></i>
+            <span class="c-label">Email</span>
+            <span class="c-value">ainapappy@gmail.com</span>
+          </a>
+          <a href="https://github.com/pappycami" target="_blank" rel="noopener" class="contact-card rd-1" data-reveal>
+            <i class="fa-brands fa-github main"></i>
+            <span class="c-label">GitHub</span>
+            <span class="c-value">github.com/pappycami</span>
+          </a>
+          <a href="https://www.ainatrix.com" target="_blank" rel="noopener" class="contact-card rd-2" data-reveal>
+            <i class="fa-solid fa-globe main"></i>
+            <span class="c-label">Blog &amp; portfolio</span>
+            <span class="c-value">www.ainatrix.com</span>
+          </a>
+          <div class="contact-card rd-3" data-reveal>
+            <i class="fa-solid fa-location-dot main"></i>
+            <span class="c-label">Localisation</span>
+            <span class="c-value">Antananarivo, Madagascar · Télétravail 🌍</span>
+          </div>
+        </div>
+
+        <div class="contact-cta" data-reveal>
+          <p>« Votre prochaine idée mérite un vrai développeur. »</p>
+          <a href="mailto:ainapappy@gmail.com" class="btn btn-light">
+            <i class="fa-solid fa-paper-plane"></i> Discutons de votre projet
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#accueil" class="logo">
+        <span class="logo-mark">AP</span>
+        <span>Aina<span class="grad-text">Pappy</span></span>
+      </a>
+
+      <ul class="foot-links">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="socials">
+        <a class="icon-btn" href="https://github.com/pappycami" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a class="icon-btn" href="mailto:ainapappy@gmail.com" aria-label="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a class="icon-btn" href="https://www.ainatrix.com" target="_blank" rel="noopener" aria-label="ainatrix.com">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+      </div>
+
+      <p class="copyright">
+        &copy; 2026 Aina Pappy — Antananarivo, Madagascar. Conçu avec <span class="heart">&hearts;</span> et
+        Alpine.js.
+      </p>
+    </div>
   </footer>
+
+  <!-- Retour en haut -->
+  <button class="back-top" type="button" x-show="scrolled" x-cloak x-transition.opacity.duration.300ms
+    @click="scrollTop()" aria-label="Retour en haut de page">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts : app.js AVANT Alpine (enregistre les composants via alpine:init) -->
+  <script src="assets/js/app.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </body>
 
 </html>

@@ -1,0 +1,237 @@
+/* ============================================================
+   Aina Pappy — Portfolio one-page
+   theme.css : tokens, base, mode sombre/clair
+   Thème inspiré d'ainatrix.com (dégradé violet signature)
+   ============================================================ */
+
+:root {
+  /* Dégradé signature ainatrix */
+  --grad-brand: linear-gradient(135deg, #667eea 0%, #6e78eb 15%, #764ba2 40%, #8556ad 50%, #9462b8 60%, #f093fb 85%, #f7a3fc 100%);
+  --grad-brand-h: linear-gradient(90deg, #667eea 0%, #6e78eb 15%, #764ba2 40%, #8556ad 50%, #9462b8 60%, #f093fb 85%, #f7a3fc 100%);
+  --grad-cta: linear-gradient(135deg, #667eea 0%, #6b76e9 25%, #764ba2 50%, #9e68c5 75%, #f093fb 100%);
+
+  /* Couleurs de marque */
+  --c-primary: #9333ea;
+  --c-primary-strong: #ac4bff;
+  --c-primary-deep: #59168b;
+  --c-pink: #f6339a;
+  --c-pink-soft: #f093fb;
+  --c-indigo: #667eea;
+
+  /* Polices ainatrix.com */
+  --font-display: "Orbitron", "Inter", sans-serif;
+  --font-title: "Sansation", "Inter", sans-serif;
+  --font-body: "Inter", "Noto Sans", -apple-system, "Segoe UI", sans-serif;
+  --font-script: "Sansita Swashed", cursive;
+
+  /* Thème clair (défaut) */
+  --bg-primary: #f9f7fc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f3eefa;
+  --text-primary: #17131f;
+  --text-secondary: #443b57;
+  --text-muted: #6f6584;
+  --text-invert: #ffffff;
+  --border-soft: rgba(147, 51, 234, 0.16);
+  --border-strong: rgba(147, 51, 234, 0.32);
+  --glass: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glow-card: rgba(147, 51, 234, 0.22);
+  --glow-soft: rgba(172, 75, 255, 0.12);
+  --grid-line: rgba(147, 51, 234, 0.08);
+  --shadow-soft: 0 10px 30px -12px rgba(89, 22, 139, 0.18);
+  --code-bg: #150e24;
+}
+
+html.dark {
+  --bg-primary: #0d0716;
+  --bg-secondary: #150e24;
+  --bg-tertiary: #1c1230;
+  --text-primary: #f5f2ff;
+  --text-secondary: #cfc4e8;
+  --text-muted: #9c8fbf;
+  --text-invert: #ffffff;
+  --border-soft: rgba(172, 75, 255, 0.2);
+  --border-strong: rgba(172, 75, 255, 0.42);
+  --glass: rgba(13, 7, 22, 0.72);
+  --glass-border: rgba(172, 75, 255, 0.22);
+  --glow-card: rgba(147, 51, 234, 0.4);
+  --glow-soft: rgba(172, 75, 255, 0.16);
+  --grid-line: rgba(172, 75, 255, 0.09);
+  --shadow-soft: 0 14px 40px -14px rgba(0, 0, 0, 0.65);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  font-family: var(--font-title);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--c-primary-strong);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--c-primary);
+  color: #fff;
+}
+
+[x-cloak] { display: none !important; }
+
+/* Scrollbar façon ainatrix */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-tertiary); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--c-primary), var(--c-pink));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--c-primary-strong); }
+
+/* ---------- Utilitaires ---------- */
+.container {
+  width: min(1160px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding: 6.5rem 0;
+}
+
+.section-alt {
+  background: var(--bg-secondary);
+}
+
+/* En-tête de section */
+.sec-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3.5rem;
+}
+
+.sec-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-primary-strong);
+  background: var(--glow-soft);
+  border: 1px solid var(--border-soft);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.sec-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.sec-sub {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+}
+
+.grad-text {
+  background: var(--grad-brand-h);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient 20s ease-in-out infinite;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease,
+    border-color 0.25s ease, color 0.25s ease;
+  will-change: transform;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  color: #fff;
+  background: var(--grad-cta);
+  background-size: 220% 220%;
+  animation: gradient 12s ease-in-out infinite;
+  box-shadow: 0 10px 30px -8px var(--glow-card);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -10px var(--glow-card);
+}
+
+.btn-ghost {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  transform: translateY(-3px);
+  border-color: var(--c-primary-strong);
+  color: var(--c-primary-strong);
+  background: var(--glow-soft);
+}
+
+.btn-light {
+  color: var(--c-primary-deep);
+  background: #fff;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
+.btn-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 44px -10px rgba(0, 0, 0, 0.45);
+}
